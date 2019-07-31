@@ -1,0 +1,1 @@
+/Users/kakerunakabachi/.zprezto/runcoms/zprofile

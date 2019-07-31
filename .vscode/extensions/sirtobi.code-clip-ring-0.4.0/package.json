@@ -1,0 +1,127 @@
+{
+	"name": "code-clip-ring",
+	"displayName": "Clipboard Ring",
+	"description": "A Visual Studio Code plugin that extends the clipboard and stores copied data in a ring storage.",
+	"version": "0.4.0",
+	"publisher": "SirTobi",
+	"author": {
+		"name": "Tobias Kahlert (a.k.a SirTobi)"
+	},
+	"homepage": "https://github.com/SrTobi/code-clip-ring",
+	"engines": {
+		"vscode": "^1.30.1"
+	},
+	"categories": [
+		"Other"
+	],
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#252526",
+		"theme": "dark"
+	},
+	"activationEvents": [
+		"onCommand:clipring.removeAllRingItems",
+		"onCommand:clipring.removeRingItem",
+		"onCommand:clipring.copyToRing",
+		"onCommand:clipring.cutToRing",
+		"onCommand:clipring.pasteRingItem",
+		"onCommand:clipring.selectAndPasteRingItem"
+	],
+	"main": "./out/main",
+	"contributes": {
+		"commands": [
+			{
+				"command": "clipring.removeAllRingItems",
+				"title": "Remove all Ring Items"
+			},
+			{
+				"command": "clipring.removeRingItem",
+				"title": "Remove Ring Item"
+			},
+			{
+				"command": "clipring.copyToRing",
+				"title": "Copy to Ring"
+			},
+			{
+				"command": "clipring.cutToRing",
+				"title": "Cut to Ring"
+			},
+			{
+				"command": "clipring.pasteRingItem",
+				"title": "Paste Ring Item"
+			},
+			{
+				"command": "clipring.selectAndPasteRingItem",
+				"title": "Select and paste Ring Item"
+			}
+		],
+		"configuration": {
+			"title": "",
+			"properties": {
+				"clipring.maxRingItems": {
+					"title": "Maximal items in the clipboard ring. Overflowing items will be removed.",
+					"default": 10,
+					"type": "integer"
+				},
+				"clipring.itemToClipboardOnPaste": {
+					"title": "Transfer item to clipboard when item is pasted.",
+					"default": true,
+					"type": "boolean"
+				},
+				"clipring.backupClipboard": {
+					"title": "Before any clipboard operation the current clipboard content is added to the ring. Set backupClipboard to false to disable this behavior.",
+					"default": true,
+					"type": "boolean"
+				},
+				"clipring.selectTextAfterPasteFromMenu": {
+					"title": "Select pasted text after pasting it from ring menu.",
+					"default": true,
+					"type": "boolean"
+				}
+			}
+		},
+		"keybindings": [
+			{
+				"key": "ctrl+c",
+				"mac": "cmd+c",
+				"when": "editorFocus",
+				"command": "clipring.copyToRing"
+			},
+			{
+				"key": "ctrl+x",
+				"mac": "cmd+x",
+				"when": "editorFocus",
+				"command": "clipring.cutToRing"
+			},
+			{
+				"key": "ctrl+shift+v",
+				"mac": "cmd+shift+v",
+				"when": "editorFocus",
+				"command": "clipring.pasteRingItem"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"vscode:prepublish": "npm install && tsc -p .",
+		"compile": "tsc -watch -p .",
+		"watch": "tsc --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/SrTobi/code-clip-ring/"
+	},
+	"bugs": {
+		"url": "https://github.com/SrTobi/code-clip-ring/issues"
+	},
+	"devDependencies": {
+		"typescript": "^3.2.2",
+		"vscode": "^1.1.26",
+		"@types/node": "^10.12.17"
+	},
+	"__metadata": {
+		"id": "dea063fe-7d70-4077-9b22-3aa7a2885b16",
+		"publisherId": "3e3ea906-8919-4a55-b84c-3b47b0a0c8ef",
+		"publisherDisplayName": "SrTobi"
+	}
+}
