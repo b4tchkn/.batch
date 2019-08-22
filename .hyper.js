@@ -184,7 +184,5 @@ module.exports = {
   localPlugins: [],
 
   keymaps: {
-    // Example
-    // 'window:devtools': 'cmd+alt+o',
   },
 };
